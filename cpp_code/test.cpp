@@ -3,9 +3,13 @@ using namespace std;
 
 int main()
 {
-    int num = 0;
-    cin >> num;
-    cout << "hello git" << endl;
-    cout << "num = " << num << endl;
+    int start = 0,end = 0;
+    cout << "enter start and end values: ";
+    cin >> start >> end;
+    while(start <= end)
+    {
+        cout << start << endl;
+        start++;
+    }
     return 0;
 }
