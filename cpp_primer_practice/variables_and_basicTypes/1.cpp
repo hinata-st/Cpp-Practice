@@ -7,30 +7,16 @@
 using namespace std;
 
 // test
-#if 0
+#if 1
 
 int main()
 {
-    vector<string> v;
-    string s;
+    int *p = nullptr; // 指针初始化为空指针
 
-    while (cin >> s)
-    {
-        v.push_back(s);
-    }
-
-    for (auto &str : v)
-    {
-        for (auto &c : str)
-        {
-            c = toupper(c);
-        }
-    }
-
-    for (auto i : v)
-    {
-        cout << i << endl;
-    }
+    int a = 42;
+    int b = 43;
+    int &aa = a; // 引用必须初始化，并且一旦定义了引用就无法在绑定到其他对象
+    const int &bb = 42;
     return 0;
 }
 
@@ -70,10 +56,13 @@ int main()
     return 0;
 }
 
+#endif
 //字符串字面值和string是不同的类型
 //字符串字面值是const char数组，储存在静态存储区，内容不可修改。
 //string是一个字符串类，可以动态管理字符串内容，支持丰富的操作。
-#endif
+
+
+
 
 #if 0
 
@@ -169,6 +158,8 @@ int main()
 
 //用数组初始化Vector: int a[] = {1,2,3,4,5}; vector<int> v(begin(a), end(a));
 
+#if 0
+
 int main()
 {
     int ia[3][4] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
@@ -193,3 +184,5 @@ int main()
 
     return 0;
 }
+
+#endif
