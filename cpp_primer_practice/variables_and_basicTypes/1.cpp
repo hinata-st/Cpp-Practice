@@ -7,7 +7,7 @@
 using namespace std;
 
 // test
-#if 1
+#if 0
 
 int main()
 {
@@ -68,7 +68,7 @@ int main()
 
 int main()
 {
-    vector<int> v1 = {1,2,3};
+    vector<int> v1(4,4);
     vector<string> v2 = {"a", "an", "the"};
     v1.push_back(4);
     for(auto i : v1)//用于遍历容器中的每个元素
@@ -185,4 +185,31 @@ int main()
     return 0;
 }
 
+#endif
+
+//练习3.23：编写一个程序，创意一个含有10个整数的vector对象，然后使用迭代器将所有的元素的值都变成原来的两倍，输出vetor对象的内容，验证程序的正确性。
+
+#if 1
+
+int main()
+{
+    vector<int> v;
+    int s;
+    while (v.size() < 10 && (cin >> s))
+    {
+        v.push_back(s);
+    }
+
+    for(auto it = v.begin(); it != v.end(); it++)
+    {
+        *it = *it * 2;
+    }
+
+    for(auto i:v)
+    {
+        cout << i << " ";
+    }
+
+    return 0;
+}
 #endif
