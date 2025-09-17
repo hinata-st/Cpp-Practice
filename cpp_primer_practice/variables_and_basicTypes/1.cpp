@@ -11,12 +11,10 @@ using namespace std;
 
 int main()
 {
-    int *p = nullptr; // 指针初始化为空指针
-
-    int a = 42;
-    int b = 43;
-    int &aa = a; // 引用必须初始化，并且一旦定义了引用就无法在绑定到其他对象
-    const int &bb = 42;
+    int ia[] = {0,2,4,6,8};
+    int *p = ia;
+    cout << endl;
+    cout << *p << endl;
     return 0;
 }
 
@@ -189,7 +187,7 @@ int main()
 
 //练习3.23：编写一个程序，创意一个含有10个整数的vector对象，然后使用迭代器将所有的元素的值都变成原来的两倍，输出vetor对象的内容，验证程序的正确性。
 
-#if 1
+#if 0
 
 int main()
 {
@@ -210,6 +208,26 @@ int main()
         cout << i << " ";
     }
 
+    return 0;
+}
+#endif
+
+#if 1
+int main()
+{
+    int arr[5] = {1,2,3,4,5};
+    int *beg = begin(arr);
+    int *last = end(arr);
+    while (beg != last)
+    {
+        *beg = *beg * 2;
+        beg++;
+    }
+
+    for(auto i : arr)
+    {
+        cout << i << " ";
+    }
     return 0;
 }
 #endif
