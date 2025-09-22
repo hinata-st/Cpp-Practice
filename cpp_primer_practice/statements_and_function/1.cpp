@@ -2,27 +2,21 @@
 
 using namespace std;
 
-//使用if else 语句实现；把数字转换为字母成绩的要求
-#if 0
+void numbs_change(int *numb1,int *numb2)
+{
+    int temp = *numb2;
+    *numb2 = *numb1;
+    *numb1 = temp;
+}
+
+#if 1
 
 int main()
 {
-    int core;
-    cout << "请输入一串成绩数字：" << endl;
-    while(cin >> core)
-    {
-        if(core >= 90)
-            cout << "A" << endl;
-        else if(core >= 80)
-            cout << "B" << endl;
-        else if(core >= 70)
-            cout << "C" << endl;
-        else if(core >= 60)
-            cout << "D" << endl;
-        else
-            cout << "E" << endl;
-        cout << "请输入一串成绩数字：" << endl;
-    }
+    int numb1, numb2;
+    cin >> numb1 >> numb2;
+    numbs_change(&numb1, &numb2);
+    cout << numb1 << ' '<< numb2 << endl;
     return 0;
 }
 //5.7
@@ -53,7 +47,7 @@ int main()
 #endif
 
 //5.14 记录最大单词的重复次数
-#if 1
+#if 0
 int main()
 {
     string str;
