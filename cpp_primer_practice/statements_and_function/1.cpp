@@ -2,24 +2,23 @@
 
 using namespace std;
 
-void numbs_change(int *numb1,int *numb2)
-{
-    int temp = *numb2;
-    *numb2 = *numb1;
-    *numb1 = temp;
-}
-
 #if 1
+
+
 
 int main()
 {
-    int numb1, numb2;
-    cin >> numb1 >> numb2;
-    numbs_change(&numb1, &numb2);
-    cout << numb1 << ' '<< numb2 << endl;
-    return 0;
+
+    int ia[3] = {1, 2, 3};
+    int &iaa = ia[2];
+    iaa = 5;
+    for (auto i:ia)
+    {
+        cout << i << endl;
+    }
+        return 0;
+   
 }
-//5.7
 #endif
 
 #if 0
@@ -46,7 +45,7 @@ int main()
 }
 #endif
 
-//5.14 记录最大单词的重复次数
+// 5.14 记录最大单词的重复次数
 #if 0
 int main()
 {
