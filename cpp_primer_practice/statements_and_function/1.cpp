@@ -3,22 +3,19 @@
 using namespace std;
 
 #if 1
-
-
-
+ 
+void err_test(const int num) 
+{
+    #ifndef NDEBUG
+    cerr << __LINE__ << "has error" << endl;
+    #endif
+}
+    
 int main()
 {
-
-    int ia[3] = {1, 2, 3};
-    int &iaa = ia[2];
-    iaa = 5;
-    for (auto i:ia)
-    {
-        cout << i << endl;
-    }
-        return 0;
-   
+    err_test(1);
 }
+
 #endif
 
 #if 0
