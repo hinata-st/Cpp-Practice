@@ -4,16 +4,20 @@ using namespace std;
 
 #if 1
  
-void err_test(const int num) 
+void my_print(double)
 {
-    #ifndef NDEBUG
-    cerr << __LINE__ << "has error" << endl;
-    #endif
+    cout << "float in" << endl;
 }
-    
+
+void my_print(int)
+{
+    cout << "int in" << endl;
+}
+
 int main()
 {
-    err_test(1);
+    my_print(3.11);
+    my_print(55);
 }
 
 #endif

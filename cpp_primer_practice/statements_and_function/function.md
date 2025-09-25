@@ -14,7 +14,9 @@
 
 #### 函数的形参列表
 
-函数的形参列表可以为空，但是不能省略。可以用`void`关键字来表示函数没有形参。   
+函数的形参列表可以为空，但是不能省略。可以用`void`关键字来表示函数没有形参。
+
+形参名是可选的，但是我们无法使用没命名的形参。是否设置未命名的形参并不影响调用时提供的实参数量。即使某个形参不被函数使用，也必须为他提供一个实参。
 
 #### 函数的返回类型
 
@@ -336,7 +338,7 @@ int *p1[10];            //p1是一个含有10个指针的数组
 int (*p2)[10] = &arr;   //p2是一个指针，它指向含有10个整数的数组
 ```
 
-返回指针数组的函数形式如下   
+返回数组指针的函数形式如下   
 `Type (*function(parameter_list))[dimension]`     
 Type表示元素的类型，dimension表示数组的大小。    
 `int (*func(int i))[10];`
@@ -511,9 +513,147 @@ _ _DATE_ _      存放文件编译日期的字符串字面值
 
 ## 函数匹配
 
+当几个重载函数的形参数量以及某些形参的类型可以由其他类型转换得来时，函数匹配就比较复杂。
 
-  
+#### 确定候选函数和可行函数
 
+候选函数：
+- 与被调用的函数名同名
+- 其声明在调用点可见
+
+
+可行函数：
+- 其形参数量与本次调用提供的实参数量相等
+- 每个实参的类型与对应的形参类型相同，或者能转换成形参类型
+
+**如果函数含有默认形参，则我们在调用函数时传入的实参数量可能少于它实际使用的实参数量**
+
+**如果没找到可行函数，编译器将报告无匹配函数的错误**
+
+**调用重载函数时应尽量避免强制类型转换**
+
+### 实参类型转换
+
+为了确定最佳匹配，编译器将实参类型到形参类型的转换划分为几个等级。排序如下：
+1. 精确匹配：
+    - 实参类型和形参类型相同
+    - 实参从数组类型或函数类型转换成对应的指针类型
+    向实参添加顶层const或者从实参中删除顶层const
+2. 通过const转换实现的匹配
+3. 通过类型提升实现的匹配
+4. 通过算术类型转换或指针转换实现的匹配
+5. 通过类类型转换实现的匹配
+
+#### 需要类型提升和算术类型转换的匹配
+
+内置类型的提示和转换可能在函数匹配时产生意想不到的结果
+
+所有算术类型转换的级别都一样。例如`int`向`unsigned int `的转换并不比`int` 向`double`的转换级别高
+
+```cpp
+void manip(long);
+void manip(float);
+manip(3.14);
+```
+字面值的类型是`double`，他既能转换成`long`也能转换成`float`，因为存在两种可能的算术类型转换，所以该调用具有二义性。
+
+#### 函数匹配和const实参
+
+如果实参是指向常量的指针，调用形参是const*的函数；如果实参是指向非常量的指针，调用形参是普通指针的函数。引用类型的实参也类似。
+
+***
+
+## 函数指针
+
+函数指针指向的是函数而非对象。函数指针指向某种特定的类型。   
+函数的类型由他的返回类型和形参类型共同决定，与函数名无关。
+
+```cpp
+bool lengthCompare(const string &,cosnt string &);
+bool (*pf)(const string &,cosnt string &);//未初始化
+```
+
+***pf两端的括号必不可少**
+
+#### 使用函数指针
+
+当把一个函数名作为一个值使用时，该函数自动地转换成指针。
+
+可以直接使用指向函数的指针调用该函数，无需提前解引用指针。
+
+```cpp
+bool b1 = pf("emilia","tan");
+bool b1 = (*pf)("emilia","tan");//一个等价的调用
+```
+在指向不同函数类型的指针不存在转换规则。
+
+#### 重载函数的指针
+
+当我们使用重载函数时，上下文必须清晰地界定到底应该选用哪个函数。
+
+```cpp
+void ff(int*);
+void ff(unsigned int);
+
+void (*pf1)(unsigned int) = ff;//pf1指向ff(unsigned int)
+void (*pf2)(int) = ff;//错误：没有一个ff与该形参列表匹配
+```
+#### 函数指针形参
+
+形参可以是指向函数的指针
+
+```cpp
+//第3个形参是函数类型，他会自动地转换成指向函数的指针
+void useBigger(const string &s1,const string &s2,bool pf(const string &,const string &));
+//等价声明，显式地将形参定义成指向函数的指针
+void useBigger(const string &s1,const string &s2,bool (*pf)(const string &,const string &));
+
+//函数类型
+typedef bool Func(const string&,const string&);
+typedef decltype(lengthCompare) Func2;
+
+//指向函数的指针
+typedef bool (*FuncP)(const string&,const string&);
+typedef decltype(lengthCompare) *FuncP2;
+
+//useBigger的等价声明，使用了类型别名
+void useBigger(const string &s1,const string &s2,Func);
+void useBigger(const string &s1,const string &s2,FuncP2);
+//这两个声明语句声明的是同一个函数，第一个语句编译器自动地将Func表示函数类型转换成指针
+```
+
+#### 返回指向函数的指针
+
+必须把返回类型写成指针的形式，编译器不会自动将函数返回类型当成对应的指针类型处理。
+
+```cpp
+using F = int(int *,int);       //F是函数类型，不是指针
+using PF = int(*)(int *,int)    //PF是指针类型
+
+PF f1(int);     //PF是指向函数的指针，f1返回指向函数的指针
+F *f1(int);     //显式地指定返回类型是指向函数的指针
+int (*f1(int))(int *,int);
+//由内向外：看到f1有形参列表，f1是个函数；f1前面有*，所以f1返回一个指针；指针的类型本身也包含形参列表，因此指针指向函数，该函数返回类型是int
+
+auto f1(int) -> int (*)(int *,int);
+
+//对比一下返回数组指针
+//func接受一个int类型的实参，返回一个指针，该指针指向含有10个整数的数组
+auto func(int i) -> int(*)[10];
+int (*func(int i))[10];
+```
+
+#### 将auto和decltype用于函数指针类型
+
+如果我们明确知道返回的函数是哪一个，就能使用decltype简化书写函数指针返回类型的过程。
+
+```cpp
+string::size_type sumLength(const string &,const string &);
+string::size_type largerLength(const string &,const string &);
+
+decltype(sumLength) * getFcn(cosnt string &);
+```
+我们将decltype作用于某个函数时，他返回函数类型而非指针类型，需要加上*以表明我们需要返回指针。
 
 
 
