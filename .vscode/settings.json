@@ -42,6 +42,7 @@
         "regex": "cpp",
         "valarray": "cpp",
         "random": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "unordered_set": "cpp"
     }
 }
