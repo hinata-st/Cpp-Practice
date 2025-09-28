@@ -12,3 +12,6 @@
 
 ## function
 - [笔记](/cpp_primer_practice/statements_and_function/function.md)
+
+## class
+- [笔记](/cpp_primer_practice/class/class.md)
