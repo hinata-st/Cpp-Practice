@@ -319,6 +319,46 @@ Sales_data::Salse_data(std::istream &is)
 
 静态成员和普通成员的另外一个区别是我们可以使用静态成员作为默认实参。
 
+#### 定义和声明分离
+
+```cpp
+class MyClass {
+public:
+    static int value;  // ❗ 只是声明
+};
+
+// ✅ 必须在类外定义（仅一次）
+int MyClass::value = 100;
+
+// ❌ 常见错误：忘记类外定义
+// 链接时会报错：undefined reference to 'MyClass::value'
+```
+⚠️ const static 的特殊规则
+
+```cpp
+class Constants {
+public:
+    // ✅ const static 整型可以类内初始化
+    static const int MAX_SIZE = 100;
+    static const char SEPARATOR = ',';
+    
+    // ❌ const static 非整型必须类外定义
+    static const double PI;  // 只能声明
+    static const std::string NAME;  // 只能声明
+};
+
+const double Constants::PI = 3.14159;
+const std::string Constants::NAME = "MyApp";
+
+// C++17 后可使用 inline
+class ModernConstants {
+public:
+    inline static const double PI = 3.14159;  // ✅ 可以类内定义
+    inline static std::string NAME = "MyApp"; // ✅ 可以类内定义
+};
+```
+
+
 
 
 
