@@ -41,3 +41,35 @@ vector<vector<int>> permutationI(vector<int> &nums)
     backtrack(state, nums, selected, res);
     return res;
 }
+
+// question :输入一个整数数组，数组中可能包含重复元素，返回所有不重复的排列。
+
+/* 回溯算法：全排列 II */
+void backtrackII(vector<int> &state, const vector<int> &choices, vector<bool> &selected, vector<vector<int>> &res)
+{
+    // 状态长度等于元素数量时， 记录解
+    if (state.size() == choices.size())
+    {
+        res.push_back(state);
+        return;
+    }
+    // 遍历所有选择
+    unordered_set<int> duplicated;
+    for (int i = 0; i < choices.size(); i++)
+    {
+        int choice = choices[i];
+        // 剪枝：不允许重复选择元素,且 不允许重复选择相等的元素
+        if (!selected[i] && duplicated.find(choice) == duplicated.end())
+        {
+            // 尝试：做出选择，更新状态
+            state.push_back(choice);
+            selected[i] = true;
+            duplicated.emplace(choice);
+            // 进行下一轮选择
+            backtrackII(state, choices, selected, res);
+            // 回退：撤销选择，恢复到之前的状态
+            state.pop_back();
+            selected[i] = false;
+        }
+    }
+}
