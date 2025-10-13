@@ -125,3 +125,9 @@ vector<int> towSumHashTable(vector<int> &nums, int target)
 }
 
 // 普通算法，暴力查找（线性搜索、广度优先搜索、深度优先搜索），时间复杂度较高，通用好；改良版（二分查找、哈希查找、BST/AVL树查找）优化性能，有的需要额外空间开销，如哈希查找，和树查找。哈希查找：查询效率要求高，无序范围的查找；树查找，需要维护顺序大型动态数据。二分查找，大型、有序的数据。
+
+// lower_bound 是 C++ STL 中的二分查找算法，在有序序列中查找第一个**不小于（≥）**目标值的元素位置。
+//binary_search 判断是否存在 bool 快速判断
+//lower_bound 第一个 ≥ target 迭代器 查找插入位置、统计
+//upper_bound 第一个 > target 迭代器 统计、查找范围
+//equal_range 等于 target 的范围 pair 批量操作
