@@ -28,7 +28,7 @@ struct TreeNode
 // now_tree    i                        l,r
 // left_tree   i+1                      l,m-1
 // right_tree  i+m-l+1                  m+1,r
-class Solution
+class Solution1
 {
 public:
     TreeNode *dfs(vector<int> &preorder, unordered_map<int, int> &inorderMap, int i, int l, int r)
@@ -53,7 +53,7 @@ public:
     {
         // 初始化哈希表，储存 inorder 元素到索引的映射
         unordered_map<int, int> inorderMap;
-        for (int i = 0; i < inorder.size(); i++)
+        for (vector<int>::size_type i = 0; i < inorder.size(); i++)
         {
             inorderMap[inorder[i]] = i;
         }
@@ -63,7 +63,7 @@ public:
 };
 
 //哈希表+递归
-class Solution
+class Solution2
 {
 public:
     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
@@ -90,3 +90,84 @@ public:
         return dfs(0, 0, n);
     }
 };
+
+// my solution review_1
+//mind
+//root_index --  i
+//inorder_index -- m
+//inorder_range -- [l,r]
+//        preorder_index    inorder_range
+//root    i                 l,r
+//left    i+1               l,m-1
+//right   i+m-l+1           m+1,r
+class Solution_review_1
+{
+    private:
+        TreeNode *dfs(vector<int> &preorder, unordered_map<int, int> &inorder, int i, int j, int n)
+        {
+            if(n - j < 0)
+            {
+                return nullptr;
+            }
+            TreeNode* root = new TreeNode(preorder[i]);
+            int m = inorder[preorder[i]];
+            root->left = dfs(preorder, inorder, i + 1, j, m - 1);
+            root->right = dfs(preorder, inorder, i + m - j + 1, m + 1, n);
+            return root;
+        }
+    public:
+        TreeNode* Rebuild(vector<int>& preorder, vector<int>& inorder)
+        {
+            unordered_map<int,int> index;
+            for (vector<int>::size_type i = 0; i < inorder.size(); i++)
+            {
+                index[inorder[i]] = i;
+            }
+            if (preorder.size() == 0 || inorder.size() == 0)
+            {
+                return nullptr;
+            }
+            return dfs(preorder, index, 0, 0, inorder.size() - 1);
+        }
+        vector<int> TreetoVector(TreeNode* root)
+        {
+            vector<int> result;
+            if(root == nullptr)
+            {
+                return result;
+            }
+            queue<TreeNode*> q;
+            TreeNode *node = root;
+            q.push(node);
+            while(!q.empty())
+            {
+                node = q.front();
+                q.pop();
+                result.push_back(node->val);
+                if(node->left != nullptr)
+                {
+                    q.push(node->left);
+                }
+                if(node->right != nullptr)
+                {
+                    q.push(node->right);
+                }
+            }
+            return result;
+        }
+};
+
+int main()
+{
+    Solution_review_1 s;
+    vector<int> preorder = {3,9,20,15,7};
+    vector<int> inorder = {9,3,15,20,7};
+    TreeNode* root = s.Rebuild(preorder,inorder);
+    vector<int> result = s.TreetoVector(root);
+    for (vector<int>::size_type i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
