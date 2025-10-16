@@ -11,6 +11,8 @@
 |offer.07|重建二叉树(分治+哈希)|middle|10/14❌,10/15✅|
 |offer.08|两个栈实现一个队列|easy|10/15✅|
 |offer.10-I|斐波那契数列|easy|10/15✅|
+|offer.10-2|跳楼梯(dp)|easy|10/16✅|
+|offer.11|选择数组最小数字(二分)|easy|10/16✅|
 
 **编译** 
 `g++ -o rebuildTree 07.cpp -std=c++14 -O2 -Wall -fexec-charset=GBK`
