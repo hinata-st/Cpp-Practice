@@ -143,7 +143,6 @@ private:
         {
             if (backtrack(board, word, k + 1, x + dir[0], y + dir[1], selected))
             {
-                selected[x][y] = false; // 回溯
                 return true;
             }
         }

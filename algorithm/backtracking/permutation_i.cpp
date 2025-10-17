@@ -73,3 +73,27 @@ void backtrackII(vector<int> &state, const vector<int> &choices, vector<bool> &s
         }
     }
 }
+
+/*
+bool dfs(int i, int j, int k)
+{
+    // ✅ 第一步：统一剪枝（在递归入口）
+    if (终止条件)
+        return true;
+    if (越界 || 不匹配 || 已访问)
+        return false;
+
+    // ✅ 第二步：标记
+    标记当前位置;
+
+    // ✅ 第三步：遍历所有选择
+    for (每个方向)
+    {
+        递归调用; // 子调用自己会剪枝
+    }
+
+    // ✅ 第四步：回溯
+    恢复标记;
+    return 结果;
+}
+*/
