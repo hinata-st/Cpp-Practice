@@ -15,7 +15,7 @@
 |offer.10-2|跳楼梯(dp)|easy|10/16✅|
 |offer.11|选择数组最小数字(二分)|easy|10/16✅|
 |offer.12|网格寻找字符串(回溯)|middle|10/17⭐|
-|offer.12|机器人的运动范围(DFS+哈希)|middle|10/17⭐|
+|offer.13|机器人的运动范围(DFS+哈希)|middle|10/17⭐|
 
 **编译** 
 `g++ -o rebuildTree 07.cpp -std=c++14 -O2 -Wall -fexec-charset=GBK`
