@@ -48,7 +48,7 @@ int main()
     cout << solu.cuttingRope_dp(n) << endl;
     return 0;
 }
-
+// 动态规划
 class offer_Solution_14_1
 {
 public:
@@ -66,3 +66,49 @@ public:
         return f[n];
     }
 };
+// 数学贪心
+class offer_Solution
+{
+public:
+    int cuttingRope(int n)
+    {
+        if (n < 4)
+        {
+            return n - 1;
+        }
+        if (n % 3 == 0)
+        {
+            return pow(3, n / 3);
+        }
+        if (n % 3 == 1)
+        {
+            return pow(3, n / 3 - 1) * 4;
+        }
+        return pow(3, n / 3) * 2;
+    }
+};
+
+/* 最大切分乘积：贪心 */
+int maxProductCutting(int n)
+{
+    // 当 n <= 3 时，必须切分出一个 1
+    if (n <= 3)
+    {
+        return 1 * (n - 1);
+    }
+    // 贪心地切分出 3 ，a 为 3 的个数，b 为余数
+    int a = n / 3;
+    int b = n % 3;
+    if (b == 1)
+    {
+        // 当余数为 1 时，将一对 1 * 3 转化为 2 * 2
+        return (int)pow(3, a - 1) * 2 * 2;
+    }
+    if (b == 2)
+    {
+        // 当余数为 2 时，不做处理
+        return (int)pow(3, a) * 2;
+    }
+    // 当余数为 0 时，不做处理
+    return (int)pow(3, a);
+}
