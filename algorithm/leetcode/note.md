@@ -18,6 +18,7 @@
 |offer.13|机器人的运动范围(DFS+哈希)|middle|10/17⭐|
 |offer.14-1|剪绳子(贪心+dp)|middle|10/18✅|
 |offer.14-2|剪绳子(贪心+dp)|middle|10/18✅|
+|offer.15|二进制中1的个数(位运算)|easy|10/18✅|
 
 **编译** 
 `g++ -o rebuildTree 07.cpp -std=c++14 -O2 -Wall -fexec-charset=GBK`
