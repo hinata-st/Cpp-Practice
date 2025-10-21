@@ -18,10 +18,10 @@ string replaceSpace(const string &s)
 }
 
 
-int main()
-{
-    string s;
-    getline(cin, s);
-    cout << replaceSpace(s) << endl;
-    return 0;
-}
+// int main()
+// {
+//     string s;
+//     getline(cin, s);
+//     cout << replaceSpace(s) << endl;
+//     return 0;
+// }

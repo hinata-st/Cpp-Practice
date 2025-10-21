@@ -154,7 +154,7 @@ public:
         return dfs(0, 0);
     }
 };
-
+/* 
 int main() {
     string s, p;
     cin >> s >> p;
@@ -162,4 +162,4 @@ int main() {
     bool res = a.isMatch(s, p);
     cout << res << endl;
     return 0;
-}
+} */

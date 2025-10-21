@@ -22,7 +22,7 @@ bool search(vector<int> &cols,int target)
     return false;
 }
 
-int main()
+/* int main()
 {
     vector<vector<int>> matrix = {
         {1, 4, 7, 11, 15},
@@ -50,7 +50,7 @@ int main()
     cout << "false" << endl;
     return 0;
 }
-
+ */
 // lower_bound 是 C++ STL 中用于二分查找的算法，能在有序区间内快速找到第一个不小于 target 的元素的位置。
 
 class Solution

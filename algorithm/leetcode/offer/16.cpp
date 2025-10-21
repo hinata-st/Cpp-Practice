@@ -37,7 +37,7 @@ class my_solution
         return x;  
     }
 };
-
+/* 
 int main()
 {
     my_solution sol;
@@ -47,7 +47,7 @@ int main()
     cout << fixed << setprecision(5);
     cout << sol.myPow(x, n) << endl;
     return 0;
-}
+} */
 
 class offer_Solution
 {

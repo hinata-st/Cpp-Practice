@@ -16,7 +16,7 @@ class My_solution_15
         return count;
     }
 };
-
+/* 
 int main()
 {
     My_solution_15 solu;
@@ -25,7 +25,7 @@ int main()
     cout << solu.hammingWeight(n) << endl;
     return 0;
 }
-
+ */
 class offer_Solution_1
 {
 public:

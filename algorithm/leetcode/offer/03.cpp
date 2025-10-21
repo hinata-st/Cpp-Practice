@@ -41,7 +41,7 @@ int findRepeatNumber(vector<int> &nums)
     return -1;
 }
 
-int main()
+/* int main()
 {
     vector<int> inputNums;
     int num;
@@ -51,7 +51,7 @@ int main()
     }
     cout << findRepeatNumber(inputNums) << endl;
     return 0;
-}
+} */
 
 /* 方法二：排序*/
 class Solution2

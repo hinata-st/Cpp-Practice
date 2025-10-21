@@ -83,11 +83,11 @@ public:
     }
 };
 
-int main()
+/* int main()
 {
     my_solution test;
     int n;
     cin >> n;
     cout << test.numWays_2(n) << endl;
     return 0;
-}
+} */

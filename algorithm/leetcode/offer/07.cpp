@@ -157,7 +157,7 @@ class Solution_review_1
         }
 };
 
-int main()
+/* int main()
 {
     Solution_review_1 s;
     vector<int> preorder = {3,9,20,15,7};
@@ -170,4 +170,4 @@ int main()
     }
     cout << endl;
     return 0;
-}
+} */

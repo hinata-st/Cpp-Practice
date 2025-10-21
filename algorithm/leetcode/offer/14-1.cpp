@@ -40,14 +40,14 @@ class My_solution_14_1
     }
 };
 
-int main()
+/* int main()
 {
     My_solution_14_1 solu;
     int n = 10;
     cout << solu.cuttingRope(n) << endl;
     cout << solu.cuttingRope_dp(n) << endl;
     return 0;
-}
+} */
 // 动态规划
 class offer_Solution_14_1
 {
