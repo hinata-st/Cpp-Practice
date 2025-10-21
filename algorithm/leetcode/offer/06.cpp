@@ -12,7 +12,7 @@ struct ListNode
 };
 
 //my solution
-class Solution
+class my_Solution_06_1
 {
 public:
     vector<int> reversePrint(ListNode *head)
@@ -38,7 +38,7 @@ public:
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution
+class my_Solution_06_2
 {
 public:
     vector<int> reversePrint(ListNode *head)
@@ -55,7 +55,7 @@ public:
 
 // 方法二：递归
 //my solution
-class Solution
+class my_Solution_06_3
 {
 public:
     vector<int> reversePrint(ListNode *head)
@@ -74,7 +74,7 @@ private:
     }
 };
 //official solution
-class Solution
+class offer_Solution_06
 {
 public:
     vector<int> reversePrint(ListNode *head)
