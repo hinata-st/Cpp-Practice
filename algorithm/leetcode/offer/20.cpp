@@ -4,7 +4,7 @@ using namespace std;
 
 // question : 请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。
 
-class Mysolution
+class Mysolution_20
 {
     public:
     bool isNumb(string s)
