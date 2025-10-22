@@ -25,6 +25,8 @@
 |offer.21|调整数组顺序(数组)|easy|10/20✅|
 |offer.19|正则表达式匹配(dfs)|hard|10/21❌|
 |offer.22|链表中倒数第k个节点(链表)|easy|10/21✅|
+|offer.20|链表中倒数第k个节点(链表)|middle|10/22❌|
+
 
 **编译** 
 `g++ -o rebuildTree 07.cpp -std=c++14 -O2 -Wall -fexec-charset=GBK`
