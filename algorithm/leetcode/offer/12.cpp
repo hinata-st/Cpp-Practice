@@ -248,3 +248,41 @@ private:
     cout << solu.exist(board, word) << endl;
     return 0;
 } */
+
+class mySolution_12_2
+{
+    public:
+    bool exist(vector<vector<char>> &board, string word)
+    {
+        int m = board.size();
+        int n = board[0].size();
+        vector<vector<bool>> visited(m, vector<bool>(n, false));
+        function<bool(int i, int j, int k)> dps = [&](int i, int j, int k) -> bool 
+        {
+            if(k == word.size())
+            {
+                return true;
+            }
+            if(i < 0 || i >=m || j < 0 || j >= n || visited[i][j] || board[i][j] != word[k])
+            {
+                return false;
+            }
+            board[i][j] = '.';
+            bool res = dps(i - 1, j, k + 1) || dps(i + 1, j, k + 1) || dps(i, j - 1, k + 1) || dps(i, j + 1, k + 1);
+            board[i][j] = word[k];
+            visited[i][j] = res;
+            return res;
+        };
+        for (int i = 0; i < m; ++i)
+        {
+            for (int j = 0; j < n; ++j)
+            {
+                if (dps(i, j, 0))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
