@@ -163,3 +163,44 @@ int main() {
     cout << res << endl;
     return 0;
 } */
+
+class my_solution_19_second
+{
+    public:
+    bool isMatch(string s, string p)
+    {
+        int m = s.size();
+        int n = p.size();
+        vector<vector<int>> visited(m + 1, vector<int>(n + 1, 0));
+        function<bool(int, int)> dfs = [&](int i, int j) -> bool
+        {
+            int res = -1;
+            if(j == n)
+            {
+                return i == m;
+            }
+            if(visited[i][j] != 0)
+            {
+                return visited[i][j] == 1;
+            }
+            if(j + 1 < n && p[j + 1] == '*')
+            {
+                if(dfs(i ,j + 2) || (i < m &&(s[i] == p[j] || p[j] == '.') && dfs(i + 1, j)))
+                {
+                    res = 1;
+                }
+            }
+            else if (i < m && (s[i] == p[j] || p[j] == '.') && dfs(i + 1, j + 1))
+            {
+                res = 1;
+            }
+            else
+            {
+                res = 0;
+            }
+            visited[i][j] = res;
+            return res == 1;
+        };
+        return dfs(0, 0);
+    }
+};
