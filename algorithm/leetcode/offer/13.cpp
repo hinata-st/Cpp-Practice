@@ -45,7 +45,7 @@ class my_solution_13
         }
 };
 
-int main()
+/* int main()
 {
     my_solution_13 sol;
     int m, n, k;
@@ -53,7 +53,7 @@ int main()
     int res = sol.movingCount(m, n, k);
     cout << res << endl;
     return 0;
-}
+} */
 /*
 class Solution
 {
