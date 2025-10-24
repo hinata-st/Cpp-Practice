@@ -10,9 +10,9 @@ struct TreeNode
     TreeNode(int x) : val(x), left(NULL), right(NULL){}
 };
 
-// question :
+// question :输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构),B是A的子结构， 即 A中有出现和B相同的结构和节点值。
 
-class mySolution_26
+    class mySolution_26
 {
     public:
     // root     n
@@ -86,7 +86,7 @@ public:
         return dfs(A->left, B->left) && dfs(A->right, B->right);
     }
 };
-
+/* 
 int main()
 {
     mySolution_26 solution;
@@ -94,4 +94,4 @@ int main()
     vector<int> b = {4,1};
     cout << solution.treeChildstructure(a, b) << endl;
     return 0;
-}
+} */
