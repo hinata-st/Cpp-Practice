@@ -171,3 +171,33 @@ class Solution_review_1
     cout << endl;
     return 0;
 } */
+
+//        preorder_index    inorder_range
+// root    i                 l,r
+// left    i+1               l,m-1
+// right   i+m-l+1           m+1,r
+class Solution_review_2
+{
+    public:
+        TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder)
+        {
+            unordered_map<int, int> index;
+            for (vector<int>::size_type i = 0; i < inorder.size(); i++)
+            {
+                index[inorder[i]] = i;
+            }
+            function<TreeNode*(int, int, int)> dfs = [&](int i, int j,int n)-> TreeNode*
+            {
+                if (n - j < 0)
+                {
+                    return nullptr;
+                }
+                int m = index[preorder[i]];
+                TreeNode *root = new TreeNode(preorder[i]);
+                root->left = dfs(i + 1, j, m - 1);
+                root->right = dfs(i + m - j + 1, m + 1, n);
+                return root;
+            };
+            return dfs(0, 0, inorder.size() - 1);
+        }
+};
