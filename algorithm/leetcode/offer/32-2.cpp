@@ -66,3 +66,8 @@ public:
         return ans;
     }
 };
+
+int main()
+{
+    cout << "hello world!" << endl; 
+}
