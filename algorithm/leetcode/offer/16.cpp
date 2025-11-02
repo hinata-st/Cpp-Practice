@@ -70,9 +70,34 @@ public:
         return n >= 0 ? qpow(x, n) : 1 / qpow(x, -(long long)n);
     }
 };
+
 /*
 2 ^ 10 = 2 ^ (1010)₂
  = 2 ^ (1×2³ + 0×2² + 1×2¹ + 0×2⁰) 
  = 2 ^ 8 * 2 ^ 2 
  = 256 * 4 
  = 1024 ✅*/
+
+ class mytest
+ {
+    public:
+    double myPow(double x, int n)
+    {
+        auto qpow = [](double a, long long n)
+        {
+            double ans = 1;
+            for (; n; n >>= 1)
+            {
+                if (n & 1)
+                {
+                    ans *= a;
+                }
+                a *= a;
+            }
+            return ans;
+        };
+        return n >= 0 ? qpow(x, n) : 1 / qpow(x, -(long long)n);
+    }
+ };
+
+ 
