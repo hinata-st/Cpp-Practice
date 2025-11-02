@@ -28,3 +28,19 @@ class mySolution_27
         return root;
     }
 };
+
+class mySolution_27_2
+{
+    public:
+    TreeNode* mirrorTree(TreeNode* root)
+    {
+        if (!root)
+        {
+            return nullptr;
+        }
+        swap(root->left, root->right);
+        mirrorTree(root->left);
+        mirrorTree(root->right);
+        return root;
+    }
+};

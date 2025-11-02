@@ -95,3 +95,29 @@ int main()
     cout << solution.treeChildstructure(a, b) << endl;
     return 0;
 } */
+
+
+class mySolution_26_2
+{
+    public:
+    bool treeChildstructure(TreeNode* A, TreeNode* B)
+    {
+        if( !A || !B)
+        {
+            return false;
+        }
+        function<bool(TreeNode *, TreeNode *)> dfs = [&](TreeNode *a, TreeNode *b) -> bool 
+        {
+            if (!b)
+            {
+                return true;
+            }
+            if (!a || a->val != b->val)
+            {
+                return false;
+            }
+            return dfs(a->left, b->left) && dfs(a->right, b->right);
+        };
+        return dfs(A, B) || treeChildstructure(A->left, B) || treeChildstructure(A->right, B);
+    }
+};
