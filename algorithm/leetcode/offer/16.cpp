@@ -78,17 +78,17 @@ public:
  = 256 * 4 
  = 1024 ✅*/
 
- class mytest
- {
+class mySolution_16_2
+{
     public:
-    double myPow(double x, int n)
+    double mypow(double x, int n)
     {
-        auto qpow = [](double a, long long n)
+        auto pow = [](double a, long long b)
         {
             double ans = 1;
-            for (; n; n >>= 1)
+            for (; b; b >>= 1)
             {
-                if (n & 1)
+                if (b & 1)
                 {
                     ans *= a;
                 }
@@ -96,8 +96,7 @@ public:
             }
             return ans;
         };
-        return n >= 0 ? qpow(x, n) : 1 / qpow(x, -(long long)n);
+        return n >= 0 ? pow(x, n) : 1 / pow(x, -(long long)n);
     }
- };
-
+};
  
