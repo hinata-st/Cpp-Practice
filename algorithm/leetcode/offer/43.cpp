@@ -31,7 +31,7 @@ public:
             int ans = 0;
             for (int i = 0; i <= up; ++i)
             {
-                ans += dfs(pos - 1, cnt + (i == 1), limit && i == up);
+                ans += dfs(pos - 1, cnt + (i == 1), limit && i == up); 
             }
             return f[pos][cnt] = ans;
         };

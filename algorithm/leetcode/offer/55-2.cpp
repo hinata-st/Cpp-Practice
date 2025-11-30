@@ -9,7 +9,7 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr){}
 };
 
-// question :
+// question :输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
 
 class mySolution_55_2
 {
@@ -60,6 +60,29 @@ public:
             int l = dfs(root->left);
             int r = dfs(root->right);
             if (l == -1 || r == -1 || abs(l - r) > 1)
+            {
+                return -1;
+            }
+            return 1 + max(l, r);
+        };
+        return dfs(root) != -1;
+    }
+};
+
+class mySolutoin_55_2_2
+{
+    public:
+    bool isBalanced(TreeNode* root)
+    {
+        function<int(TreeNode *)> dfs = [&](TreeNode *node) -> int 
+        {
+            if(!root)
+            {
+                return 0;
+            }
+            int l = dfs(node->left);
+            int r = dfs(node->right);   
+            if(l == -1 || r == -1 || abs(l - r) > 1)
             {
                 return -1;
             }
