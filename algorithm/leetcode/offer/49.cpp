@@ -25,7 +25,23 @@ class mySolution_49
         }  
         return dp[dp.size() - 1];
     }
-    
+    int nthUglyNumber_review(int n)
+    {
+        int p1 = 0, p2 = 0, p3 = 0;
+        vector<int> dp(n);
+        dp[0] = 1;
+        for (int i = 1; i < n; i++)
+        {
+            int a = dp[p1] * 2;
+            int b = dp[p2] * 3; 
+            int c = dp[p3] * 5;
+            dp[i] = min(a, min(b, c));
+            if (dp[i] == a) p1++;
+            if (dp[i] == b) p2++;
+            if (dp[i] == c) p3++;
+        }
+        return dp[n - 1];
+    }
 };
 
 // 每个丑数都是由前面的丑数乘以 2、3 或 5 得到的
@@ -81,13 +97,4 @@ public:
     }
 };
 
-#if 0
-int main()
-{
-    mySolution_49 sol;
-    int n;
-    cin >> n;
-    cout << sol.nthUglyNumber(n) << endl;
-    return 0;
-}
-#endif
+
