@@ -66,6 +66,8 @@ public:
         int n = nums.size();
         for (int i = 0; i < n; ++i)
         {
+            // 注意q.front()存储的是最大值的下标
+            // 判断队头是否滑出窗口
             if (!q.empty() && i - q.front() + 1 > k)
             {
                 q.pop_front();

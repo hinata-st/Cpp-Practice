@@ -113,3 +113,10 @@ git commit -m "feat(offer): 完成 offer.XX 题目
 |`perf`|性能优化|`perf(offer): 优化时间复杂度`|
 |`test`|添加测试|`test: 添加边界测试用例`|
 |`chore`|工具配置|`chore: 更新编译选项`|
+
+# Some useful algorithms
+``` cpp
+int xs = 0;
+// lb : least bit that is 1
+int lb = xs & -xs;
+```
