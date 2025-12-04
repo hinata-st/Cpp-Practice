@@ -81,3 +81,42 @@ private:
  * obj->push_back(value);
  * int param_3 = obj->pop_front();
  */
+
+class mySolutoin_59_2_v2
+{
+    private:
+        queue<int> q1;
+        deque<int> q2;
+    public:
+        int max_value()
+        {
+            if (q2.empty())
+            {
+                return -1;
+            }
+            return q2.front();
+        }
+        int push_back(int value)
+        {
+            q1.push(value);
+            while (!q2.empty() && q2.back() < value)
+            {
+                q2.pop_back();
+            }
+            q2.push_back(value);
+        }
+        int pop_front()
+        {
+            if (q1.empty())
+            {
+                return -1;
+            }
+            int ans = q1.front();
+            q1.pop();
+            if (ans == q2.front())
+            {
+                q2.pop_front();
+            }
+            return ans;
+        }
+};
