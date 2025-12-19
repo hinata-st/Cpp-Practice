@@ -327,17 +327,16 @@ class mySolution_12_3
 class mySolution_12_4
 {
     public:
-    bool exist(vector<vector<char>> &board, string word)
+    int exist(vector<vector<char>> &board, string word)
     {
-        int n = board.size();
-        int m = board[0].size();
-        function<bool(int, int, int)> dfs = [&](int i, int j, int k) -> bool
-        {
-            if(k == word.size())
+        int m = board.size();
+        int n = board[0].size();
+        function<bool(int i, int j, int k)> dfs = [&](int i, int j, int k) -> bool {
+            if (k == word.size())
             {
                 return true;
             }
-            if(i < 0 || i >= n || j < 0 || j >= m || board[i][j] != word[k])
+            if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[k])
             {
                 return false;
             }
@@ -345,18 +344,16 @@ class mySolution_12_4
             board[i][j] = '.';
             bool res = dfs(i - 1, j, k + 1) || dfs(i + 1, j, k + 1) || dfs(i, j - 1, k + 1) || dfs(i, j + 1, k + 1);
             board[i][j] = temp;
-            return res;
         };
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < m; ++i)
         {
-            for (int j = 0; j < m; ++j)
+            for (int j = 0; j < n; ++j)
             {
                 if (dfs(i, j, 0))
                 {
-                    return true;
+                    return 1;
                 }
             }
         }
-        return false;
     }
 };
