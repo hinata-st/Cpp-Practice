@@ -88,6 +88,8 @@
 |leetcode.7|盛水最多的容器(双指针)|middle|12/24✅|
 |leetcode.8|爬楼梯(dp)|easy|12/25✅|
 |leetcode.9|只出现一次的数字(位)|easy|12/26✅|
+|leetcode.10|二叉树的最大深度(树)|easy|12/30✅|
+|leetcode.11|翻转链表(链表)|easy|12/30✅|
 
 
 
